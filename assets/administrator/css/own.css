@@ -1,0 +1,57 @@
+.dropzone {
+    border-style: dotted;
+}
+.image-thumbnail {
+    width: 114px;
+    margin: 3px;
+    border: 1px solid #cfcfcf;
+    padding: 1px;
+    display: inline-flex;
+    position: relative;
+}
+.image-thumbnail span {
+    position: absolute;
+    bottom: 0;
+    background: #f2f2f2d9;
+    color: #333;
+    font-weight: 600;
+    width: 100%;
+    padding: 2px;
+    width: 100%;
+}
+.file-content {
+    display: inline-block;
+}
+.image-canvas{
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+input[type="checkbox"]:checked+label {
+    border: 1px solid #e7701c;
+    color: #e7701c;
+}
+input[type="checkbox"]:checked+label.active h5 {
+    color: #e7701c;
+}
+input[type="checkbox"]:checked+label.active {
+    border: 2px solid #3bcd75;
+    color: #3bcd75;
+}
+input[type="checkbox"]:checked+label.active h5 {
+    color: #3bcd75;
+    overflow: hidden;
+}
+
+.slot_select:checked+label {
+    border: 2px solid #089e58;
+}
+.strikethrough {
+    text-decoration: line-through;
+}
+.slot_select_label .card-body {
+    background: #c9ffe6;
+    box-shadow: 0px 0px 4px 0px #549f7c;
+    border-radius: 11px;
+}

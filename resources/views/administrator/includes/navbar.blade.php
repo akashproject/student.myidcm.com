@@ -1,143 +1,95 @@
-<!-- Topbar header - style you can find in pages.scss -->
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+    id="layout-navbar" >
+    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+        <i class="bx bx-menu bx-sm"></i>
+        </a>
+    </div>
 
-        <!-- ============================================================== -->
+    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+        <!-- Search -->
+        <div class="navbar-nav align-items-center">
+        <div class="nav-item d-flex align-items-center">
+            <i class="bx bx-search fs-4 lh-0"></i>
+            <input
+            type="text"
+            class="form-control border-0 shadow-none"
+            placeholder="Search..."
+            aria-label="Search..."
+            />
+        </div>
+        </div>
+        <!-- /Search -->
 
-        <header class="topbar" data-navbarbg="skin5">
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
+        <!-- Place this tag where you want the button to render. -->
+        <li class="nav-item lh-1 me-3">
+            <a
+            class="github-button"
+            href="https://github.com/themeselection/sneat-html-admin-template-free"
+            data-icon="octicon-star"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
+            >Star</a
+            >
+        </li>
 
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-
-                <div class="navbar-header" data-logobg="skin5">
-
-                    <!-- This is for the sidebar toggle which is visible on mobile only -->
-
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-
-                    <!-- ============================================================== -->
-
-                    <!-- Logo -->
-
-                    <!-- ============================================================== -->
-
-                    <a class="navbar-brand" href="{{ url('/dashboard') }}">
-
-                        <!-- Logo icon -->
-
-                        <b class="logo-icon p-l-10">
-
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-
-                            <!-- Dark Logo icon -->
-
-                            <img src="{{ url('/assets/images/logo.png') }}" alt="homepage" class="light-logo" style="width: 84px;"/>
-
-                           
-
-                        </b>
-
-                        <!--End Logo icon -->
-
-                        
-
-                        <!-- Logo icon -->
-
-                        <!-- <b class="logo-icon"> -->
-
-                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-
-                        <!-- Dark Logo icon -->
-
-                        <!-- <img src="assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
-
-
-                        <!-- </b> -->
-
-                        <!--End Logo icon -->
-
-                    </a>
-
-                    <!-- ============================================================== -->
-
-                    <!-- End Logo -->
-
-
-
+        <!-- User -->
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <div class="avatar avatar-online">
+                <img src="{{ url('assets/administrator/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+            </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+                <a class="dropdown-item" href="#">
+                <div class="d-flex">
+                    <div class="flex-shrink-0 me-3">
+                    <div class="avatar avatar-online">
+                        <img src="{{ url('assets/administrator/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                    </div>
+                    <div class="flex-grow-1">
+                    <span class="fw-semibold d-block">{{ $loggedInUser->name }}</span>
+                    <small class="text-muted">Admin</small>
+                    </div>
                 </div>
-
-                <!-- ============================================================== -->
-
-                <!-- End Logo -->
-
-                <!-- ============================================================== -->
-
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-
-                    <!-- ============================================================== -->
-
-                    <!-- toggle and nav items -->
-
-                    <!-- ============================================================== -->
-
-                    <ul class="navbar-nav float-left mr-auto">
-
-                        <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
-
-                    </ul>
-
-                    <!-- ============================================================== -->
-
-                    <!-- Right side toggle and nav items -->
-
-                    <!-- ============================================================== -->
-
-                    <ul class="navbar-nav float-right">
-
-                       
-
-                        <!-- ============================================================== -->
-
-                        
-
-                        <!-- ============================================================== -->
-
-                        <!-- User profile and search -->
-
-                        <!-- ============================================================== -->
-
-                        <li class="nav-item dropdown">
-
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
-
-                            <div class="dropdown-menu dropdown-menu-right user-dd animated">                             
-
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa fa-power-off m-r-5 m-l-5"></i>  {{ __('Logout') }}</a>
-                                
-                                <div class="dropdown-divider"></div>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                </form>
-                            </div>
-
-                        </li>
-
-                        <!-- ============================================================== -->
-
-                        <!-- User profile and search -->
-
-                        <!-- ============================================================== -->
-
-                    </ul>
-
-                </div>
-
-            </nav>
-
-        </header>
-
-<!-- ============================================================== -->
-
-<!-- End Topbar header -->
-
-<!-- ============================================================== -->
-
+                </a>
+            </li>
+            <li>
+                <div class="dropdown-divider"></div>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{{ route('profile') }}">
+                <i class="bx bx-user me-2"></i>
+                <span class="align-middle">My Profile</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{{ route('account') }}">
+                <i class="bx bx-cog me-2"></i>
+                <span class="align-middle">Account</span>
+                </a>
+            </li>
+            
+            <li>
+                <div class="dropdown-divider"></div>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                </form>
+                <i class="bx bx-power-off me-2"></i>
+                    <span class="align-middle">Log Out</span>
+                </a>
+            </li>
+            </ul>
+        </li>
+        <!--/ User -->
+        </ul>
+    </div>
+</nav>

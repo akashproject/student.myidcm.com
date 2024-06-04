@@ -23,38 +23,38 @@
 
 				<div class="row">
 					<div class="col-md-8" >
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="name" class="col-sm-3 text-right control-label col-form-label">Name</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name Here" >
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="slug" class="col-sm-3 text-right control-label col-form-label">Slug</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" name="slug" id="slug" placeholder="Slug Here" >
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="description" class="col-sm-3 text-right control-label col-form-label">Description</label>
 							<div class="col-sm-9">
 								<textarea class="form-control editor" name="description"  id="description" placeholder="Enter description Here" ></textarea>
 							</div>
 						</div>
 
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="excerpt" class="col-sm-3 text-right control-label col-form-label">Exerpt</label>
 							<div class="col-sm-9">
 								<textarea class="form-control" name="excerpt" id="excerpt" placeholder="Enter excerpt Here" ></textarea>
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="duration" class="col-sm-3 text-right control-label col-form-label">Course Duration</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" name="duration" id="duration" placeholder="Enter Course Duration" >
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="no_of_module" class="col-sm-3 text-right control-label col-form-label">No Of Module</label>
 							<div class="col-sm-9">
 								<input type="number" class="form-control" name="no_of_module" id="no_of_module" placeholder="Enter No Of Module" >
@@ -63,7 +63,7 @@
 					</div>
 
 					<div class="col-md-4">
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="state" class="col-sm-12 text-left control-label col-form-label">Status</label>
 							<div class="col-sm-12">
 								<select name="status" id="status" class="select2 form-control custom-select" style="width: 100%; height:36px;">	
@@ -73,7 +73,7 @@
 								<select>
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="mb-2 row">
 							<label for="tags" class="col-md-6 text-left control-label col-form-label">Featured Image</label>
 							<div class="col-sm-6 text-center">
 								<a href="#imageBox" class="image-profile open-popup-link">
