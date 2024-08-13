@@ -2,43 +2,69 @@
 @section('content')
 <div class="col-12">
 	@if($users)
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title"> Datatable</h5>
-				<div class="table-responsive">
-					<table id="zero_config" class="table table-striped table-bordered">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Mobile</th>
-								<th>Options</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							@foreach ($users as $value)
-							<tr>
-								<td>{{ $value->name }}</td>													
-								<td>{{ $value->email }}</td>													
-								<td>{{ $value->mobile }}</td>													
-								<td>
-									<a href="#" class="btn btn-success btn-small">View</a>
-									<a href="{{ url('administrator/view-page') }}/{{ $value->id }}" class="btn btn-primary btn-small">Edit</a>
+			<!-- Striped Rows -->
+			<div class="card">
+                <h5 class="card-header"> {{ count($users) }} Records found</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-striped">
+                    <thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Mobile</th>
+							<th>Status</th>
+							<th>Actions</th>
+						</tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+						@foreach ($users as $value)
+						<tr>
+							<td>{{ $value->name }}</td>													
+							<td>{{ $value->email }}</td>													
+							<td>{{ $value->mobile }}</td>
+							<td>
+								@switch($value->status)
+								@case('0')
+									<span class="badge bg-label-danger me-1">
+									Deactive
+								@break
+								@case('1')
+									<span class="badge bg-label-success me-1">
+									Active
+								@break
+								@endswitch
+								</span>
+							</td>
+							<td>
+							<div class="dropdown">
+								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+								<i class="bx bx-dots-vertical-rounded"></i>
+								</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="{{ route('admin-user',$value->id) }}"
+										><i class="bx bx-edit-alt me-1"></i> Edit</a
+									>
 									@can('delete')
-                                    <a href="{{ url('administrator/delete-page') }}/{{ $value->id }}" class="btn btn-danger btn-small" onclick="return confirm('Are you sure?')"; >Delete </a>
-                                    @endcan
+									<a class="dropdown-item" href="{{ route('admin-delete-user',$value->id) }}"
+										><i class="bx bx-trash me-1"></i> Deactive</a
+									>
+									@endcan
 									@role('super-admin')
-									<a href="{{ route('assign-role.index',$value->id) }}" class="btn btn-danger btn-small" onclick="return confirm('Are you sure?')"; >Role </a>
-									@endrole
-                                </td>
-							</tr>
-							@endforeach							
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+									<a class="dropdown-item" href="{{ route('assign-role.index',$value->id) }}"
+										><i class="bx bx-lock-open me-1"></i> Role</a
+									>
+									@endcan
+								</div>
+							</div>
+							</td>
+						</tr>
+					  	@endforeach		
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+            <!--/ Striped Rows -->
+
 	@endif
 </div>                   
 @endsection

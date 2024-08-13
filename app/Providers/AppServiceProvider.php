@@ -24,10 +24,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        //
+        Paginator::useBootstrap();
         View::composer('*', function($view)
         {
             $media = Media::orderBy('created_at', 'desc')->get();
             $view->with('media', $media);
+
+            // Get User
+            $loggedInUser = Auth::user();
+            $view->with('loggedInUser', $loggedInUser);
+
+            $headerMenu = [
+                'about-us' => "About Us",
+                'portfolio' => "Portfolio",
+                'career' => "Career",
+                'gallery' => "Gallery",
+                'contact' => "Contact Us",
+            ];
+            $view->with('headerMenu', $headerMenu);
         });
     }
 }

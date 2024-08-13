@@ -22,24 +22,6 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="team_id" class="col-md-4 col-form-label text-md-end">{{ __('Team') }}</label>
-                            <div class="col-md-6">
-                                <select id="team_id" class="form-control @error('team_id') is-invalid @enderror" name="team_id" value="{{ old('team_id') }}" required autocomplete="team_id">
-                                    <option value="2" > Admin </option>
-                                    <option value="3" > Center </option>
-                                    <option value="4" > Teacher </option>
-                                    <option value="5" > Placement </option>
-                                    <option value="6" > Student </option>
-                                </select>
-                                @error('team_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
                             <label for="permissions" class="col-md-12 col-form-label text-md-start">{{ __('Permission') }}</label>
                             <div class="col-md-3">
                                 <input id="permissions" type="checkbox" class="@error('permissions') is-invalid @enderror" name="permissions[]" value="create" autocomplete="permissions" autofocus> Create
@@ -58,8 +40,8 @@
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
-
+                        @enderror
+                        <input type="hidden" name="role_id" id="role_id" value="" >
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
