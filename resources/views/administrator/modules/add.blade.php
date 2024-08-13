@@ -2,10 +2,10 @@
 @section('content')
 <div class="col-12">
 	<div class="card">
-		<form class="form-horizontal" method="post" action="{{ route('admin-save-course') }}" enctype="multipart/form-data">
+		<form class="form-horizontal" method="post" action="{{ route('admin-save-module') }}" enctype="multipart/form-data">
 			@csrf
 			<div class="card-body">
-				<h4 class="card-title"> Add Course </h4>
+				<h4 class="card-title"> Add Module </h4>
 				@if ($errors->any())
 					<div class="alert alert-danger">
 						<ul>
@@ -41,25 +41,6 @@
 								<textarea class="form-control editor" name="description"  id="description" placeholder="Enter description Here" ></textarea>
 							</div>
 						</div>
-
-						<div class="mb-2 row">
-							<label for="excerpt" class="col-sm-3 text-right control-label col-form-label">Exerpt</label>
-							<div class="col-sm-9">
-								<textarea class="form-control" name="excerpt" id="excerpt" placeholder="Enter excerpt Here" ></textarea>
-							</div>
-						</div>
-						<div class="mb-2 row">
-							<label for="duration" class="col-sm-3 text-right control-label col-form-label">Course Duration</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" name="duration" id="duration" placeholder="Enter Course Duration" >
-							</div>
-						</div>
-						<div class="mb-2 row">
-							<label for="no_of_module" class="col-sm-3 text-right control-label col-form-label">No Of Module</label>
-							<div class="col-sm-9">
-								<input type="number" class="form-control" name="no_of_module" id="no_of_module" placeholder="Enter No Of Module" >
-							</div>
-						</div>	
 					</div>
 
 					<div class="col-md-4">
@@ -80,7 +61,7 @@
 									<img src="https://dummyimage.com/150x150?text=Add%20Image" alt="">
 									<input type="hidden" name="featured_image" id="featured_image" value="" >	
 								</a>	
-								@if(isset($course->featured_image))
+								@if(isset($module->featured_image))
 									<a href="javascript:void(0)" class="removeImage" style="color: #c90f0f;font-weight: 600;"> Remove Image </a>	
 								@endif
 							</div>
@@ -91,7 +72,8 @@
 			<div class="border-top">
 				<div class="card-body">
 					<button type="submit" class="btn btn-primary">Submit</button>
-					<input type="hidden" name="course_id" id="course_id" value="" >
+					<input type="hidden" name="module_id" id="module_id" value="" >
+					<input type="hidden" name="course_id" id="course_id" value="{{ $course_id }}" >
 				</div>
 			</div>
 		</form>

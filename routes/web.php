@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('home'); })->name('website');
 
 Auth::routes();
 
@@ -100,5 +98,6 @@ Route::group(['prefix' => 'administrator'], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    
+    Route::get('/account', [App\Http\Controllers\UserController::class, 'account'])->name('account');
+    Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 });
