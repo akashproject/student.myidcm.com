@@ -78,7 +78,7 @@
 
          <!-- Layouts -->
          <li class="menu-item">
-            <a href="{{ route('web') }}" class="menu-link">
+            <a href="{{ route('website') }}" class="menu-link">
                <i class="menu-icon tf-icons bx bx-globe"></i>
                <div data-i18n="globe">Visit Site</div>
             </a>

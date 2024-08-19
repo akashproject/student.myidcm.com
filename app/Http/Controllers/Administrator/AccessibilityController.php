@@ -10,8 +10,6 @@ use App\Models\User;
 
 class AccessibilityController extends Controller
 {
-    //
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,7 +28,6 @@ class AccessibilityController extends Controller
     public function createAccessibility()
     {
         try {
-            
             return view('administrator.accessibility.create');
         } catch(\Illuminate\Database\QueryException $e){
             var_dump($e->getMessage());
@@ -63,17 +60,13 @@ class AccessibilityController extends Controller
                 $role = Role::findOrFail($data['role_id']);
                 $role->update($data);
             }
-
             $role->syncPermissions([]);
-
-            foreach ($data['permissions'] as $key => $value) {
+            foreach($data['permissions'] as $key => $value) {
                 $role->givePermissionTo($value);
             }
-            return redirect()->back()->with('message', 'New role has been created successfully'); 
-
+            return redirect()->back()->with('message','New role has been created successfully');
         } catch(\Illuminate\Database\QueryException $e){
             var_dump($e->getMessage());
         }
     }
-
 }

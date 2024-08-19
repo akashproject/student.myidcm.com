@@ -13,12 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('home'); })->name('website');
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('web');
+
 Route::group(['prefix' => 'administrator'], function () {
 
     Route::get('/signin', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
@@ -36,7 +35,6 @@ Route::group(['prefix' => 'administrator'], function () {
         Route::get('/user/{id}', [App\Http\Controllers\Administrator\UserController::class, 'show'])->name('admin-user');
         Route::post('/save-user', [App\Http\Controllers\Administrator\UserController::class, 'save'])->name('admin-save-user');
         Route::get('/delete-user/{id}', [App\Http\Controllers\Administrator\UserController::class, 'delete'])->name('admin-delete-user');
-
         Route::get('/settings', [App\Http\Controllers\Administrator\SettingController::class, 'show'])->name('admin-settings');
         Route::post('/save-settings', [App\Http\Controllers\Administrator\SettingController::class, 'save'])->name('admin-save-settings');
 
@@ -83,7 +81,8 @@ Route::group(['prefix' => 'administrator'], function () {
         Route::post('/search-media', [App\Http\Controllers\Administrator\MediaController::class, 'search'])->name('admin-search-media');
 
         //Certificate
-        Route::get('/certificate', [App\Http\Controllers\Administrator\CertificateController::class, 'show'])->name('admin-categories');
+        Route::get('/certificate', [App\Http\Controllers\Administrator\CertificateController::class, 'show'])->name('admin-certificate');
+        Route::get('/generate-certificate', [App\Http\Controllers\Administrator\CertificateController::class, 'generate'])->name('admin-generate-certificate');
         
     });
 
@@ -98,6 +97,8 @@ Route::group(['prefix' => 'administrator'], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('website');
     Route::get('/account', [App\Http\Controllers\UserController::class, 'account'])->name('account');
     Route::get('/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('profile');
 });

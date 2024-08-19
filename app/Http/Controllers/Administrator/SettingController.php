@@ -23,18 +23,16 @@ class SettingController extends Controller
 
     public function save(Request $request)
     {
-        //
         try {
             $data = $request->all();
             unset($data['_token']);
             foreach($data as $key => $value){
-                $setting = Setting::where('key', $key);    
+                $setting = Setting::where('key', $key);
                 if($setting->exists()){
-                    $setting->update(array("key"=>$key,"value"=>$value));  
+                    $setting->update(array("key"=>$key,"value"=>$value));
                 } else {
                     $setting->create(array("key"=>$key,"value"=>$value)); 
                 }
-
             }
             return redirect()->back()->with('message', 'Page updated successfully!');
         } catch(\Illuminate\Database\QueryException $e){
