@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\DB;
 use Jenssegers\Agent\Facades\Agent;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Models\Permission;
+use App\Models\UserMeta;
 
 if (! function_exists('check_device')) {
     function check_device($param = null){
@@ -71,6 +72,13 @@ if (! function_exists('get_theme_setting')) {
     function get_theme_setting($value){
         $media = Setting::where('key',$value)->first();
         return (isset($media->value))?$media->value:"null";
+    }
+}
+
+if (! function_exists('get_user_meta')) {
+    function get_user_meta($user_id,$value){
+        $user_meta = UserMeta::where('user_id',$user_id)->where('key',$value)->first();
+        return (isset($user_meta->value))?$user_meta->value:null;
     }
 }
 

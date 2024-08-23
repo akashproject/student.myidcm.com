@@ -5,44 +5,66 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\User;
+use App\Models\UserMeta;
 class CertificateController extends Controller
 {
     //
 
-    public function show(){
+    public function show($id){
         try {
-
-
             return view('administrator.certificate.show');
         } catch(\Illuminate\Database\QueryException $e){
             //throw $th;
         }
     }
 
-    public function generate(){
+    public function generate($id){
         try {
-            // $data = $request->all();
-            // $validatedData = $request->validate([
-            //     'qr_content' => 'required',
-            // ]);
-            
-            $data = [
-                'center'=> "dalhousi",
-            ];
-            $qr_content = route('admin-certificate');
-            $code = random_strings(6);
-            if(isset($data['code'])){
-                $code = $data['code'];
-                $qr_content = $qr_content.'?utm_campaign='.$code.'&center='.$data['center'];
-            }
+           
+            $users = User::role("Student")->get();
 
+            $students = [];
+            foreach ($users as $key => $value) {
+                $students[$key]['name'] = $value->name;
+                $students[$key]['date_of_birth'] = get_user_meta($value->id,'dob');
+                $students[$key]['parent_name'] = get_user_meta($value->id,'parent_name');
+                $students[$key]['center'] = get_user_meta($value->id,'center');
+                $students[$key]['course'] = get_user_meta($value->id,'course');
+                $students[$key]['duration'] = get_user_meta($value->id,'duration');
+                $students[$key]['grade'] = get_user_meta($value->id,'grade');
+                QrCode::merge('/assets/images/fab.png')
+                ->size(256)
+                ->margin(1)
+                ->generate(route('admin-certificate',$value->id), public_path('images/qrcode_'.$value->id.'.svg'));
+                $students[$key]['qrcode'] = url("public/images/qrcode_").$value->id.'.svg';
+            }
+           return view('administrator.certificate.generate',compact('students'));
+        } catch(\Illuminate\Database\QueryException $e){
+            var_dump($e->getMessage()); 
+        }
+    }
+
+    public function print($id){
+        try {
+           
+            $user = User::findOrFail($id);
+
+            $user->name;
+            $user->date_of_birth = get_user_meta($user->id,'dob');
+            $user->parent_name = get_user_meta($user->id,'parent_name');
+            $user->center = get_user_meta($user->id,'center');
+            $user->course = get_user_meta($user->id,'course');
+            $user->center_code = get_user_meta($user->id,'center_code');
+            $user->duration = get_user_meta($user->id,'duration');
+            $user->grade = get_user_meta($user->id,'grade');
             QrCode::merge('/assets/images/fab.png')
             ->size(256)
             ->margin(1)
-            ->generate($qr_content, public_path('images/qrcode_'.$code.'.svg'));
+            ->generate(route('certificate',utf8_encode($user->id)), public_path('images/qrcode_'.$user->id.'.svg'));
+            $user->qrcode = url("public/images/qrcode_").$user->id.'.svg';
 
-            $qrPath = url("public/images/qrcode_").$code.'.svg';
-           return view('administrator.certificate.generate',compact('qrPath'));
+           return view('administrator.certificate.print',compact('user'));
         } catch(\Illuminate\Database\QueryException $e){
             var_dump($e->getMessage()); 
         }
