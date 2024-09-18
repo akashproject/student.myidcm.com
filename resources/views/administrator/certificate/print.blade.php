@@ -2,7 +2,7 @@
 @section('content')
 <style>
 page[size="A4"][layout="portrait"] {
-  /* width: 29.7cm; */
+  width: 29.7cm;
   height: 21cm;  
 }
 page {
@@ -30,16 +30,16 @@ page {
 </div>
 
 <page size="A4" layout="portrait" class="page" style="position:relative" id="certificate">
-    <div style="position: absolute;top: 165px;left: 845px;height: 100px;width: 100px;"><span ><img src="{{ $user->qrcode }}" style="width: 100%;"></span></div>
-    <div style="position: absolute;top: 365px;left: 375px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->name }}</span></div>
-    <div style="position: absolute;top: 365px;left: 940px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->date_of_birth }}</span></div>
-    <div style="position: absolute;top: 413px;left: 281px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->parent_name }}</span></div>
-    <div style="position: absolute;top: 413px;left: 841px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->center }}</span></div>
-    <div style="position: absolute;top: 459px;left: 575px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->course }}</span></div>
-    <div style="position: absolute;top: 510px;left: 281px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->duration }}</span></div>
-    <div style="position: absolute;top: 510px;left: 540px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->grade }}</span></div>
-    <div style="position: absolute;top: 590px;left: 281px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->center_code }}</span></div>
-    <div style="position: absolute;top: 622px;left: 281px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ date("d M, Y") }}</span></div>
+    <div style="position: absolute;top: 140px;left: 710px;height: 100px;width: 100px;"><span ><img src="{{ $user->qrcode }}" style="width: 100%;"></span></div>
+    <div style="position: absolute;top: 335px;left: 290px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->name }}</span></div>
+    <div style="position: absolute;top: 335px;left: 840px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->date_of_birth }}</span></div>
+    <div style="position: absolute;top: 383px;left: 196px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->parent_name }}</span></div>
+    <div style="position: absolute;top: 383px;left: 756px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->center }}</span></div>
+    <div style="position: absolute;top: 424px;left: 490px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->course }}</span></div>
+    <div style="position: absolute;top: 475px;left: 196px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->duration }}</span></div>
+    <div style="position: absolute;top: 475px;left: 440px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->grade }}</span></div>
+    <div style="position: absolute;top: 555px;left: 196px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $user->center_code }}</span></div>
+    <div style="position: absolute;top: 587px;left: 196px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ date("d M, Y") }}</span></div>
 </page>
 @endsection
 @section('script')

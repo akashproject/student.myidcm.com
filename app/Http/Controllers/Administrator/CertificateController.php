@@ -22,24 +22,20 @@ class CertificateController extends Controller
     public function generate($id){
         try {
            
-            $users = User::role("Student")->get();
-
-            $students = [];
-            foreach ($users as $key => $value) {
-                $students[$key]['name'] = $value->name;
-                $students[$key]['date_of_birth'] = get_user_meta($value->id,'dob');
-                $students[$key]['parent_name'] = get_user_meta($value->id,'parent_name');
-                $students[$key]['center'] = get_user_meta($value->id,'center');
-                $students[$key]['course'] = get_user_meta($value->id,'course');
-                $students[$key]['duration'] = get_user_meta($value->id,'duration');
-                $students[$key]['grade'] = get_user_meta($value->id,'grade');
-                QrCode::merge('/assets/images/fab.png')
-                ->size(256)
-                ->margin(1)
-                ->generate(route('admin-certificate',$value->id), public_path('images/qrcode_'.$value->id.'.svg'));
-                $students[$key]['qrcode'] = url("public/images/qrcode_").$value->id.'.svg';
-            }
-           return view('administrator.certificate.generate',compact('students'));
+            $user = User::findOrFail($id);
+            $student['name'] = $user->name;
+            $student['date_of_birth'] = get_user_meta($user->id,'dob');
+            $student['parent_name'] = get_user_meta($user->id,'parent_name');
+            $student['center'] = get_user_meta($user->id,'center');
+            $student['course'] = get_user_meta($user->id,'course');
+            $student['duration'] = get_user_meta($user->id,'duration');
+            $student['grade'] = get_user_meta($user->id,'grade');
+            QrCode::merge('/assets/images/fab.png')
+            ->size(256)
+            ->margin(1)
+            ->generate(route('admin-certificate',$user->id), public_path('images/qrcode_'.$user->id.'.svg'));
+            $student['qrcode'] = url("public/images/qrcode_").$user->id.'.svg';
+           return view('administrator.certificate.generate',compact('student'));
         } catch(\Illuminate\Database\QueryException $e){
             var_dump($e->getMessage()); 
         }
@@ -49,7 +45,6 @@ class CertificateController extends Controller
         try {
            
             $user = User::findOrFail($id);
-
             $user->name;
             $user->date_of_birth = get_user_meta($user->id,'dob');
             $user->parent_name = get_user_meta($user->id,'parent_name');

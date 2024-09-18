@@ -6,8 +6,8 @@
 		<script>
 		document.write(new Date().getFullYear());
 		</script>
-		, made with ❤️ by
-		<a href="https://scriptcrown.com" target="_blank" class="footer-link fw-bolder">Scriptcrown Infotech</a>
+		, ALL Copyright Reserved
+		<a href="https://scriptcrown.com" target="_blank" class="footer-link fw-bolder">MYIDCM</a>
 	</div>
 	</div>
 </footer>

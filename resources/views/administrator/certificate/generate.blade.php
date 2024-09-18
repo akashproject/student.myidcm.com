@@ -23,7 +23,6 @@ page {
 }
 </style>
 <div id="certificate" >
-@foreach($students as $student)
 <page size="A4" layout="portrait" class="page" style="position:relative" >
     <div style="position: absolute;top: 165px;left: 845px;height: 100px;width: 100px;"><span ><img src="{{ $student['qrcode'] }}" style="width: 100%;"></span></div>
     <div style="position: absolute;top: 365px;left: 375px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ $student['name'] }}</span></div>
@@ -36,7 +35,6 @@ page {
     <div style="position: absolute;top: 590px;left: 281px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >IDCM/ID01/00001</span></div>
     <div style="position: absolute;top: 622px;left: 281px;" ><span style="border: none;width: 30%;text-align: center;color: #000;font-size: 16px;font-weight: 500;font-style: italic;" >{{ date("d M, Y") }}</span></div>
 </page>
-@endforeach
 </div>
 @endsection
 @section('script')
